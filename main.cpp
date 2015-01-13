@@ -42,7 +42,7 @@ int main()
                    0.5,100);
     glMatrixMode(GL_MODELVIEW);
     gluLookAt(2,2,2,0,0,0,0,1,0);
-
+    glEnable(GL_DEPTH_TEST);
     bool quit=false;
     SDL_Event event;
     while(!quit)
@@ -61,7 +61,7 @@ int main()
                     }
             }
         }
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         drawCube();
         //drawTriangle();
         SDL_GL_SwapWindow(window);
@@ -96,6 +96,7 @@ void drawCube()
             glVertex3f(-1,1,1);
             glColor3f(0.0f,0.0f,1.0f);
             glVertex3f(1,1,1);
+            glColor3f(1.0,1.0,1.0);
             glVertex3f(1,-1,1);
         glEnd();
     glPopMatrix();
