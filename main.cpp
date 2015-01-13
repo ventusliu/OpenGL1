@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <cstdlib>
+#include <GL/gl.h>
 
 int main()
 {
@@ -20,6 +21,19 @@ int main()
                 screenSize.h/2,
                 SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE
                 );
-    SDL_Delay(10000);
 
+    SDL_GLContext glContext;
+    //set OpenGL attributes
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,0);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,10);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
+    glContext=SDL_GL_CreateContext(window);
+    //now make this the active context
+    SDL_GL_MakeCurrent(window,glContext);
+    glClearColor(1.0,1.0,1.0,1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapWindow(window);
+
+    SDL_Delay(10000);
 }
