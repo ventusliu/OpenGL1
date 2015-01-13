@@ -41,6 +41,7 @@ int main()
     gluPerspective(45.0f,(float)screenSize.w/screenSize.h,
                    0.5,100);
     glMatrixMode(GL_MODELVIEW);
+    //adjust the camera position
     gluLookAt(2,2,2,0,0,0,0,1,0);
     glEnable(GL_DEPTH_TEST);
     bool quit=false;
